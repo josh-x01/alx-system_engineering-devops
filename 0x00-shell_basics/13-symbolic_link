@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo ln -s /bin/ls /tmp/sym/__ls__
