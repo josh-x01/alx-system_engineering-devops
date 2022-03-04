@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod betty hello
+chmod betty /tmp/h/hello
