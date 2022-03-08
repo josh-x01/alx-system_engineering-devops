@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -c1 | paste -s |tr -d "[:black:]"
+cut -c 1 | paste -s -d "
