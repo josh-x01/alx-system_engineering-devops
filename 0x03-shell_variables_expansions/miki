@@ -1,0 +1,44 @@
+6-create_local_variable
+
+#!/bin/bash
+BEST="School"
+
+7-create_global_variable
+
+#!/bin/bash
+export BEST="School"
+
+8-true_knowledge
+
+#!/bin/bash
+echo $(($TRUEKNOWLEDGE+128))
+
+9-divide_and_rule
+
+#!/bin/bash
+echo $(($POWER/$DIVIDE))
+
+10-love_exponent_breath
+
+#!/bin/bash
+echo $(($BREATH**$LOVE))
+
+11-binary_to_decimal
+
+#!/bin/bash
+echo $((2#$BINARY))
+
+12-combinations
+
+#!/bin/bash
+echo {a..z}{a..z} | tr ' ' '\n' | grep -v 'oo'
+
+13-print_float
+
+#!/bin/bash
+printf '%0.2f\n' $NUM
+
+100-decimal_to_hexadecimal
+
+#!/bin/bash
+printf '%x\n' $DECIMAL
