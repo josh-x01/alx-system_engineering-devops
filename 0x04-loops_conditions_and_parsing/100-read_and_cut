@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Displays username, user id, Home directory path for the user int /etc/passwd
+
+i=0
+
+while [ $i != 1 ]; do
+    cut -d: -f1,3,7 /etc/passwd
+    i=1
+done

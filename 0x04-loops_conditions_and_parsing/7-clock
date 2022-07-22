@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Prints every minute and hour from 1-59 and 1-12, respectively
+
+hr=0
+minute=1
+
+while [ $hr -le 12 ]
+do
+  echo "Hour: $hr"
+
+  while [ $minute -le 59 ]
+  do
+    echo $minute
+    ((minute = minute + 1))
+  done
+
+  minute=1
+  ((hr++))
+done

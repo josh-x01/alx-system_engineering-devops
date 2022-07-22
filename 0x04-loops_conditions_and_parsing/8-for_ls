@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# List all files and directories in the current working directory, excluding
+# hidden files. Also, characters before the hyphen (and including the hyphen)
+# are not printed.
+
+LIST="$(ls)"
+
+for i in $LIST ; do
+  echo "${i#*-}"
+done
