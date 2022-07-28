@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# A script that listens on port 98 on localhost
+# Run this script, then open another terminal and execute `telnet localhost
+# 98`, when you type in some text and press <Enter>, the text you wrote will
+# appear on the first terminal, the one you ran this script on
+
+nc -l .{0,12} 98
