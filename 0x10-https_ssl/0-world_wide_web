@@ -1,28 +1,30 @@
 #!/usr/bin/env bash
-# script that will display information about subdomains.
+# Display information about subdomains.
 
-function single_domain_details {
-	dig "${2}"."$1" | grep -A1 'ANSWER SECTION:' | \
-	awk 'FNR == 2 {printf "The subdomain %s is a %s record and points to %s\n", var, $4, $5}' var="$2"
+get_website_info (){
+    # Return info on subdomains www, web-01, web-02 and lb-01
+    # if there's no subdomains provided
+    if [ -z "$2" ]
+    then
+        www_ip="$(dig www."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}')"
+        www_ip_record_type="$(dig www."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $4}')"
+        lb_01_ip="$(dig lb-01."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}')"
+        lb_01_ip_record_type="$(dig lb-01."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $4}')"
+        web_01_ip="$(dig web-01."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}')"
+        web_01_ip_record_type="$(dig web-01."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $4}')"
+        web_02_ip="$(dig web-02."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}')"
+        web_02_ip_record_type="$(dig web-02."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $4}')"
+        echo "The subdomain www is a $www_ip_record_type record and points to $www_ip"
+        echo "The subdomain lb-01 is a $lb_01_ip_record_type record and points to $lb_01_ip"
+        echo "The subdomain web-01 is a $web_01_ip_record_type record and points to $web_01_ip"
+        echo "The subdomain web-02 is a $web_02_ip_record_type record and points to $web_02_ip"
+    # If the subdomain is provided, get that subdomain's record only
+    else
+        ip="$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $5}')"
+        ip_record_type="$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $4}')"
+        echo "The subdomain $2 is a $ip_record_type record and points to $ip"
+    fi
+
 }
 
-function all_domain_details {
-	domain_names=("www" "lb-01" "web-01" "web-02")
-
-	for i in "${domain_names[@]}";
-	do
-		dig "${i}"."$1" | grep -A1 'ANSWER SECTION:' | \
-		awk 'FNR == 2 {printf "The subdomain %s is a %s record and points to %s\n", var, $4, $5}' var="$i"
-	done
-}
-
-
-if [ $# -lt 1 ]
-then
-	echo "Domain name required"
-elif [ $# -eq 1 ]
-then
-	all_domain_details "$1";
-else
-	single_domain_details "$1" "$2";
-fi
+get_website_info "$1" "$2"
