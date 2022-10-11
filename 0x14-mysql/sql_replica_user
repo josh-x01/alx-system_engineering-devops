@@ -1,0 +1,8 @@
+CREATE USER 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
+GRANT REPLICATION SLAVE ON *.* TO 'holberton_user'@'localhost';
+FLUSH PRIVILEGES;
+FLUSH TABLES WITH READ LOCK;
+SHOW MASTER STATUS;
+UNLOCK TABLES;
+CREATE DATABASE db01;
+exit
