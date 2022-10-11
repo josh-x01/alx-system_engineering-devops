@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# this program takes user as arg and makes whoami analysis on it
+sudo -u $1 whoami
