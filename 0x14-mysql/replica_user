@@ -1,0 +1,6 @@
+CREATE USER 'replica_user'@'%' IDENTIFIED BY 'root';
+GRANT REPLICATION CLIENT ON *.* TO 'replica_user'@'%';
+GRANT ALL PRIVILEGES ON *.*  TO 'replica_user'@'%';
+GRANT ALL PRIVILEGES ON replica_user.*  TO 'holberton_user'@'localhost';
+FLUSH PRIVILEGES;
+exit
