@@ -4,9 +4,9 @@ This program write user data
 to json file
 '''
 
+import json
 import requests
 import sys
-import json
 
 if __name__ == '__main__':
     emp_id = int(sys.argv[1])
