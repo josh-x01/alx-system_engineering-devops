@@ -18,4 +18,4 @@ if __name__ == '__main__':
     with open(filename, mode='w') as f:
         for task in tasks:
             if task.get('userId') == emp_id:
-                f.write('"{:d}","{:s}","{}","{:s}\n"'.format(emp_id, emp_uname, task.get('completed'), task.get('title')))
+                f.write('"{:d}","{:s}","{}","{:s}"\n'.format(emp_id, emp_uname, task.get('completed'), task.get('title')))
