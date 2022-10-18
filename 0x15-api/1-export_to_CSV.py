@@ -14,8 +14,8 @@ if __name__ == '__main__':
     emp_uname = emp_data.get('username')
     tasks = requests.get("https://jsonplaceholder.typicode.com/todos").json()
     filename = str(emp_id) + '.csv'
-    csv_style = '"{:d}","{:s}","{}","{:s}"\n'
     with open(filename, mode='w') as f:
         for task in tasks:
             if task.get('userId') == emp_id:
-                f.write(csv_style.format(emp_id, emp_uname, task.get('completed'), task.get('title')))
+                f.write('"{:d}","{:s}","{}","{:s}"\n'.format(emp_id,
+                        emp_uname, task.get('completed'), task.get('title')))
