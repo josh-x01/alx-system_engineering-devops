@@ -1,3 +1,4 @@
 *.csv
 .gitignore
 2.json
+*.swp

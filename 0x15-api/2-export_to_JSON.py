@@ -6,6 +6,7 @@ to json file
 
 import requests
 import sys
+import json
 
 if __name__ == '__main__':
     emp_id = int(sys.argv[1])
@@ -23,4 +24,4 @@ if __name__ == '__main__':
                             "username": emp_uname}
                 tasks_obj.append(task_obj)
         json_obj = {str(emp_id): tasks_obj}
-        f.write("{}".format(json_obj))
+        json.dump(json_obj, f)
