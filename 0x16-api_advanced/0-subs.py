@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 '''Module for reddit subs'''
-import requests
 
 
 def number_of_subscribers(subreddit):
@@ -8,6 +7,8 @@ def number_of_subscribers(subreddit):
         A method that return the number of
         reddit subscribers
     '''
+    import requests
+    
     result = requests.get('https://www.reddit.com/r/{}/about.json'
                           .format(subreddit),
                           headers={'User-Agent': 'My-User-Agent'},
