@@ -4,8 +4,8 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    """" A method that return the number of
-    reddit subscribers """
+    """"A method that return the number of
+    reddit subscribers"""
 
     result = requests.get("https://www.reddit.com/r/{}/about.json"
                           .format(subreddit),
